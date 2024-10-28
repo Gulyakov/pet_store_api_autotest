@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.myproject'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
+    testImplementation platform('org.junit:junit-bom:5.11.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly('org.junit.platform:junit-platform-launcher')
+    testImplementation 'io.cucumber:cucumber-java:7.20.1'
+    testImplementation 'io.cucumber:cucumber-junit:7.20.1'
+}
+
+test {
+    useJUnitPlatform()
+}
