@@ -33,7 +33,7 @@ bin/
 /nbbuild/
 /dist/
 /nbdist/
-/.nb-gradle/
+l/.nb-gradle/
 
 ### VS Code ###
 .vscode/
