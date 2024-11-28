@@ -16,6 +16,6 @@
 - Файл для настройки в папке codestyle проекта
 - Как импортировать файл: File > Settings > Editor > Code Style > Java > Scheme: (Иконка шестеренки) > Import scheme > IntelliJ IDEA code style xml
 
-# Установка и запуск
+# Запуск
 
-TODO
+./gradlew test
