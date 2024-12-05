@@ -1,5 +1,5 @@
 # Pet Store API autotest
-Проект автоматизации тестирования сервиса API зоомагиза http://petstore.swagger.io
+Проект автоматизации тестирования сервиса API зоомагазина http://petstore.swagger.io
 
 # Технологии
 - Java 8
@@ -18,4 +18,4 @@
 
 # Запуск
 
-./gradlew test
+./gradlew cucumber_local -Dcucumber.tags="@All"
