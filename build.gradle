@@ -19,7 +19,6 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:5.5.0'
     testImplementation 'io.cucumber:cucumber-java:7.20.1'
     testImplementation 'io.cucumber:cucumber-junit:7.20.1'
-    testImplementation 'junit:junit:4.13.2'
     cucumberRuntime 'io.cucumber:cucumber-core:7.20.1'
 
 }
