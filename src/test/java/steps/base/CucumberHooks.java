@@ -9,6 +9,7 @@ public class CucumberHooks {
   @Before
   public void before() {
     Memory.getInstance();
+
   }
 
   @After
