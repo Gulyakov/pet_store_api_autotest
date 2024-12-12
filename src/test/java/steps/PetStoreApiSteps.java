@@ -30,12 +30,12 @@ public class PetStoreApiSteps {
   }
 
   @Then("Получаем код ответа {int}")
-  public void thenVerifyPetsStatusInResponse(int statusCode) {
+  public void thenVerifyResponseStatusCode(int statusCode) {
     Assert.assertEquals(200, getResponse().getStatusCode());
   }
 
   @And("Возвращается список животных со статусом {string}")
-  public void and(String expectedStatus) {
+  public void andVerifyPetsStatusInResponse(String expectedStatus) {
     List<String> statuses = getResponse().jsonPath().getList("status");
     for (String actualStatus : statuses) {
       Assert.assertEquals(expectedStatus, actualStatus);
