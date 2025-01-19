@@ -30,7 +30,7 @@ public class PetStoreApiSteps {
   }
 
   @Then("Получаем код ответа {int}")
-  public void thenVerifyResponseStatusCode(int statusCode) {
+  public void thenVerifyStatusCode(int statusCode) {
     Assert.assertEquals(200, getResponse().getStatusCode());
   }
 
@@ -45,5 +45,4 @@ public class PetStoreApiSteps {
   private Response getResponse() {
     return (Response) Memory.get("response");
   }
-
 }
