@@ -6,11 +6,15 @@ Feature: Получить список животных по статусу
   Я хочу получить список животных по статусу
   Чтобы проверить, что возвращается правильный список
 
-  @debug
-  Scenario: Получить список животных со статусом available
-    Given Для параметра status указано значение "available"
+  @debug @All
+  Scenario Outline: Получить список животных со статусом <status>
+    Given Для параметра status указано значение "<status>"
     When Отправляем GET запрос на "/pet/findByStatus"
     Then Получаем код ответа 200
-    And Возвращается список животных со статусом "available"
+    And Возвращается список животных со статусом "<status>"
 
-
+    Examples:
+      | status    |
+      | available |
+      | pending   |
+      | sold      |

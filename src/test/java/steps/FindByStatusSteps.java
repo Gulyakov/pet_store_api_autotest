@@ -1,17 +1,18 @@
 package steps;
 
 import static io.restassured.RestAssured.given;
+import static steps.CommonSteps.getResponse;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import java.util.List;
 import org.junit.Assert;
+import report.Log;
 import stepshelpers.Memory;
 
-public class PetStoreApiSteps {
+public class FindByStatusSteps {
 
   @Given("Для параметра status указано значение {string}")
   public void givenStatusValue(String value) {
@@ -20,18 +21,9 @@ public class PetStoreApiSteps {
 
   @When("Отправляем GET запрос на {string}")
   public void whenSendGetRequestToFindPetsByStatus(String endpoint) {
-    Memory.put("baseURI", "https://petstore.swagger.io/v2");
-    Response response = given()
-        .queryParam("status", Memory.get("value"))
-        .when()
+    Response response = given().queryParam("status", Memory.get("value")).when()
         .get(Memory.get("baseURI") + endpoint);
     Memory.put("response", response);
-
-  }
-
-  @Then("Получаем код ответа {int}")
-  public void thenVerifyStatusCode(int statusCode) {
-    Assert.assertEquals(200, getResponse().getStatusCode());
   }
 
   @And("Возвращается список животных со статусом {string}")
@@ -40,9 +32,6 @@ public class PetStoreApiSteps {
     for (String actualStatus : statuses) {
       Assert.assertEquals(expectedStatus, actualStatus);
     }
-  }
-
-  private Response getResponse() {
-    return (Response) Memory.get("response");
+    Log.log("Тело ответа: " + getResponse().getBody().asString());
   }
 }

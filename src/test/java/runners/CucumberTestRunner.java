@@ -9,15 +9,12 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features",
     glue = "steps",
-    tags = "@debug",
+    tags = "@All",
     plugin = {
         "pretty",
         "html:build/reports/cucumber.html",
-        "json:build/reports/cucumber.json"
-
     }
 )
 
 public class CucumberTestRunner {
-
 }
