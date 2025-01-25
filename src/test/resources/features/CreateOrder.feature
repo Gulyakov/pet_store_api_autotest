@@ -9,7 +9,7 @@ Feature: Создание заказа
 @debug @All
 Scenario: Успешное создание заказа
   Given Тело запроса загружено из "src/test/resources/requests/post_order_request_body.json"
-  When Отправляем POST запрос на "/store/order"
+  When Отправляем "POST" запрос на "/store/order"
   Then Получаем код ответа 200
   And Проверяем, что ответ соответствует схеме "src/test/resources/schemas/post_order_schema.json"
   And Проверяем, что ID заказа в ответе совпадает с ID из запроса

@@ -22,7 +22,7 @@ public class CommonSteps {
   }
 
   @Given("Тело запроса загружено из {string}")
-  public void loadRequestBody(String filePath) throws Exception {
+  public static void loadRequestBody(String filePath) throws Exception {
     String requestBody = FileUtil.read(filePath);
     Memory.put("requestBody", requestBody);
     Log.log("Тело запроса: " + requestBody);
@@ -43,13 +43,16 @@ public class CommonSteps {
     Log.log("Ответ соответствует заданной JSON-схеме: " + schemaPath);
   }
 
-  @When("Отправляем POST запрос на {string}")
-  public void sendPostRequest(String endpoint) {
+  @When("Отправляем {string} запрос на {string}")
+  public void sendPostRequest(String method, String endpoint) {
     String requestBody = (String) Memory.get("requestBody");
+    if (requestBody == null) {
+      requestBody = "";
+    }
     Response response = given()
         .header("Content-Type", "application/json")
         .body(requestBody)
-        .post(Memory.get("baseURI") + endpoint);
+        .request(method.toUpperCase(), Memory.get("baseURI") + endpoint);
     Memory.put("response", response);
     Log.log("Адрес запроса: " + Memory.get("baseURI") + endpoint);
     Log.log("Тело ответа: " + response.getBody().asString());

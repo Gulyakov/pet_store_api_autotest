@@ -29,6 +29,8 @@ public class FindByStatusSteps {
   @And("Возвращается список животных со статусом {string}")
   public void andVerifyPetsStatusInResponse(String expectedStatus) {
     List<String> statuses = getResponse().jsonPath().getList("status");
+    Assert.assertNotNull("Ответ не содержит поле 'status' ", statuses);
+    Assert.assertFalse("Список статусов пуст ", statuses.isEmpty());
     for (String actualStatus : statuses) {
       Assert.assertEquals(expectedStatus, actualStatus);
     }
