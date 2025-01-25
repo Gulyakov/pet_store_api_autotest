@@ -17,8 +17,7 @@ public class UpdatePetSteps {
   @And("Проверяем, что ответ идентичен телу запроса из {string}")
   public void verifyResponseMatchesRequestBody(String requestBodyPath) throws IOException {
     String expectedBody = FileUtil.read(requestBodyPath);
-    Response response = (Response) Memory.get("response");
-    String actualBody = response.getBody().asString();
+    String actualBody = CommonSteps.getResponse().getBody().asString();
     JsonObject expectedJson = JsonParser.parseString(expectedBody).getAsJsonObject();
     JsonObject actualJson = JsonParser.parseString(actualBody).getAsJsonObject();
     assertEquals("Ответ не совпадает с ожидаемым телом запроса", expectedJson, actualJson);
