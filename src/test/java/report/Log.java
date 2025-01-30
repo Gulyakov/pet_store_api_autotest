@@ -20,6 +20,4 @@ public class Log {
   public static void log(String msg) {
     currentScenario.log(msg);
   }
-
-
 }

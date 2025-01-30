@@ -1,11 +1,10 @@
 package steps;
 
-import io.cucumber.java.Scenario;
-import io.cucumber.java.Before;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import report.Log;
 import stepshelpers.Memory;
-
 
 public class CucumberHooks {
 

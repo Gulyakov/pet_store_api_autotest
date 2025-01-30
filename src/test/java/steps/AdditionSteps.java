@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import stepshelpers.Memory;
 
-
 public class AdditionSteps {
 
   @Given("два числа {int} и {int}")

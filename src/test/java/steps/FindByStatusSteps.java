@@ -1,11 +1,9 @@
 package steps;
 
-import static io.restassured.RestAssured.given;
-import static steps.CommonSteps.getResponse;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import java.util.List;
 import org.junit.Assert;
@@ -21,19 +19,19 @@ public class FindByStatusSteps {
 
   @When("Отправляем GET запрос на {string}")
   public void whenSendGetRequestToFindPetsByStatus(String endpoint) {
-    Response response = given().queryParam("status", Memory.get("value")).when()
+    Response response = RestAssured.given().queryParam("status", Memory.get("value")).when()
         .get(Memory.get("baseURI") + endpoint);
     Memory.put("response", response);
   }
 
   @And("Возвращается список животных со статусом {string}")
   public void andVerifyPetsStatusInResponse(String expectedStatus) {
-    List<String> statuses = getResponse().jsonPath().getList("status");
+    List<String> statuses = CommonSteps.getResponse().jsonPath().getList("status");
     Assert.assertNotNull("Ответ не содержит поле 'status' ", statuses);
     Assert.assertFalse("Список статусов пуст ", statuses.isEmpty());
     for (String actualStatus : statuses) {
       Assert.assertEquals(expectedStatus, actualStatus);
     }
-    Log.log("Тело ответа: " + getResponse().getBody().asString());
+    Log.log("Тело ответа: " + CommonSteps.getResponse().getBody().asString());
   }
 }

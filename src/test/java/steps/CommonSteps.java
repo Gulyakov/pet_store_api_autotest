@@ -1,11 +1,10 @@
 package steps;
 
-import static io.restassured.RestAssured.given;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import java.nio.file.Paths;
@@ -13,7 +12,6 @@ import org.junit.Assert;
 import report.Log;
 import stepshelpers.Memory;
 import utils.FileUtil;
-
 
 public class CommonSteps {
 
@@ -49,14 +47,10 @@ public class CommonSteps {
     if (requestBody == null) {
       requestBody = "";
     }
-    Response response = given()
-        .header("Content-Type", "application/json")
-        .body(requestBody)
-        .request(method.toUpperCase(), Memory.get("baseURI") + endpoint);
+    Response response = RestAssured.given().header("Content-Type", "application/json")
+        .body(requestBody).request(method.toUpperCase(), Memory.get("baseURI") + endpoint);
     Memory.put("response", response);
-    Log.log("Адрес запроса: " + Memory.get("baseURI") + endpoint);
-    Log.log("Тело ответа: " + response.getBody().asString());
+    Log.log("Адрес запроса: " + Memory.get("baseURI") + endpoint + System.lineSeparator()
+        + "Тело ответа: " + response.getBody().asString());
   }
-
 }
-

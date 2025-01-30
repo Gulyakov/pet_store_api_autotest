@@ -6,7 +6,6 @@ import org.junit.Assert;
 import report.Log;
 import stepshelpers.Memory;
 
-
 public class CreateOrderSteps {
 
   @And("Проверяем, что ID заказа в ответе совпадает с ID из запроса")

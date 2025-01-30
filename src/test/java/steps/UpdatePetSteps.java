@@ -1,16 +1,12 @@
 package steps;
 
-import static org.junit.Assert.assertEquals;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.cucumber.java.en.And;
-import io.restassured.response.Response;
 import java.io.IOException;
+import org.junit.Assert;
 import report.Log;
-import stepshelpers.Memory;
 import utils.FileUtil;
-
 
 public class UpdatePetSteps {
 
@@ -20,8 +16,7 @@ public class UpdatePetSteps {
     String actualBody = CommonSteps.getResponse().getBody().asString();
     JsonObject expectedJson = JsonParser.parseString(expectedBody).getAsJsonObject();
     JsonObject actualJson = JsonParser.parseString(actualBody).getAsJsonObject();
-    assertEquals("Ответ не совпадает с ожидаемым телом запроса", expectedJson, actualJson);
+    Assert.assertEquals("Ответ не совпадает с ожидаемым телом запроса", expectedJson, actualJson);
     Log.log("Ответ совпадает с телом запроса: " + actualJson.toString());
   }
-
 }
