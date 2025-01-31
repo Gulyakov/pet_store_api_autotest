@@ -8,12 +8,8 @@ Feature: Обновление данных о животном
 
   @debug @All
   Scenario: Успешное обновление данных о животном
-    #Создаем животное
     Given Тело запроса загружено из "src/test/resources/requests/post_pet_request_body.json"
-    When Отправляем "POST" запрос на "/pet"
-    #Обновляем данные по животному
+    When Отправляем POST запрос на "/pet"
     And Тело запроса загружено из "src/test/resources/requests/put_pet_request_body.json"
-    And Отправляем "PUT" запрос на "/pet"
-    Then Проверяем, что ответ идентичен телу запроса из "src/test/resources/requests/put_pet_request_body.json"
-
-
+    And Отправляем PUT запрос на "/pet"
+    Then Проверяем, что значения свойств из ответа совпадают со значениями свойств из запроса

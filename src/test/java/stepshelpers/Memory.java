@@ -28,5 +28,4 @@ public class Memory {
   public static void clear() {
     map.clear();
   }
-
 }

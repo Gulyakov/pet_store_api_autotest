@@ -2,7 +2,7 @@
   "id": 1,
   "petId": 777,
   "quantity": 1,
-  "shipDate": "2025-01-22T21:36:02.089Z",
+  "shipDate": "2025-01-22T00:00:00.000+0000",
   "status": "placed",
   "complete": true
 }

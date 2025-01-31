@@ -9,8 +9,8 @@ Feature: Получить список животных по статусу
   @debug @All
   Scenario Outline: Получить список животных со статусом <status>
     Given Для параметра status указано значение "<status>"
-    When Отправляем "GET" запрос на "/pet/findByStatus?status=<status>"
-    Then Получаем код ответа 200
+    When Отправляем GET запрос на "/pet/findByStatus?status=<status>"
+    Then Проверяем, что код ответа равен 200
     And Возвращается список животных со статусом "<status>"
 
     Examples:
