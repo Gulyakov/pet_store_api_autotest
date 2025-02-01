@@ -1,5 +1,5 @@
 # Pet Store API autotest
-Проект автоматизации тестирования сервиса API зоомагиза http://petstore.swagger.io
+Проект автоматизации тестирования сервиса API зоомагазина http://petstore.swagger.io
 
 # Технологии
 - Java 8
@@ -16,6 +16,6 @@
 - Файл для настройки в папке codestyle проекта
 - Как импортировать файл: File > Settings > Editor > Code Style > Java > Scheme: (Иконка шестеренки) > Import scheme > IntelliJ IDEA code style xml
 
-# Установка и запуск
+# Запуск
 
-TODO
+gradle cucumber_local

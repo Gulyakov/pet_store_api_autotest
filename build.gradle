@@ -9,15 +9,47 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
 dependencies {
     testImplementation 'io.rest-assured:rest-assured:5.5.0'
-    testImplementation platform('org.junit:junit-bom:5.11.3')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly('org.junit.platform:junit-platform-launcher')
     testImplementation 'io.cucumber:cucumber-java:7.20.1'
     testImplementation 'io.cucumber:cucumber-junit:7.20.1'
+    testImplementation 'io.rest-assured:json-schema-validator:5.3.0'
+    testImplementation 'com.google.code.gson:gson:2.10.1'
+    testImplementation 'commons-io:commons-io:2.11.0'
+    cucumberRuntime 'io.cucumber:cucumber-core:7.20.1'
+
+
+}
+
+
+ext {
+    Tags = System.getProperty("cucumber.tags", "@All")
+}
+
+task cucumber_local() {
+    doLast {
+        javaexec {
+            mainClass = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'pretty',
+                    '--glue', 'steps',
+                    'src/test/resources/features',
+                    '--tags', Tags
+            ]
+            systemProperties System.properties
+        }
+    }
 }
 
 test {
-    useJUnitPlatform()
+    useJUnit {
+
+    }
 }
