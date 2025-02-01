@@ -6,7 +6,7 @@ Feature: Создание нового животного
   Я хочу создать новое животное в системе
   Чтобы проверить, что оно успешно добавляется
 
-  @debug @All
+  @All @CreatePet
   Scenario: Успешное создание животного
     Given Тело запроса загружено из "src/test/resources/requests/post_pet_request_body.json"
     When Отправляем POST запрос на "/pet"

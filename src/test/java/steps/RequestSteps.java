@@ -34,7 +34,8 @@ public class RequestSteps {
 
   @And("Отправляем PUT запрос на {string}")
   public void sendPutRequest(String endpoint) {
-    ApiHelper.sendRequest("PUT", endpoint, ApiHelper.getRequestBody(), null, null);
+    ApiHelper.sendRequest(
+        "PUT", endpoint, ApiHelper.getRequestBody(), null, null);
   }
 
   @And("Отправляем DELETE запрос на {string}")

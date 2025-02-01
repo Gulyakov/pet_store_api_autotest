@@ -6,7 +6,7 @@ Feature: Получить список животных по статусу
   Я хочу получить список животных по статусу
   Чтобы проверить, что возвращается правильный список
 
-  @debug @All
+  @All @FindPetByStatus
   Scenario Outline: Получить список животных со статусом <status>
     Given Для параметра status указано значение "<status>"
     When Отправляем GET запрос на "/pet/findByStatus?status=<status>"

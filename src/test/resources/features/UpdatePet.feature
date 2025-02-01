@@ -6,7 +6,7 @@ Feature: Обновление данных о животном
   Я хочу иметь возможность обновлять данные о животном
   Чтобы поддерживать актуальную информацию
 
-  @debug @All
+  @All @UpdatePet
   Scenario: Успешное обновление данных о животном
     Given Тело запроса загружено из "src/test/resources/requests/post_pet_request_body.json"
     When Отправляем POST запрос на "/pet"

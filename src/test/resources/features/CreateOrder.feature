@@ -6,7 +6,7 @@ Feature: Создание заказа
   Я хочу создать заказ на животное в системе
   Чтобы проверить, что заказ успешно создаётся и возвращается корректный ответ
 
-  @debug @All
+  @All @CreateOrder
   Scenario: Успешное создание заказа
     Given Тело запроса загружено из "src/test/resources/requests/post_order_request_body.json"
     When Отправляем POST запрос на "/store/order"

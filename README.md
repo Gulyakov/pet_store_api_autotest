@@ -18,4 +18,4 @@
 
 # Запуск
 
-./gradlew cucumber_local -Dcucumber.tags="@debug"
+gradle cucumber_local
